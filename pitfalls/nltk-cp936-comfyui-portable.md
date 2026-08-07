@@ -1,6 +1,6 @@
 ---
 id: nltk-cp936-comfyui-portable
-title: nltk 3.10 在 ComfyUI 便携版导入失败 (unknown encoding: cp936 / blocked import from cwd)
+title: "nltk 3.10 在 ComfyUI 便携版导入失败 (unknown encoding: cp936 / blocked import from cwd)"
 type: windows_pitfall
 tags:
 - nltk
