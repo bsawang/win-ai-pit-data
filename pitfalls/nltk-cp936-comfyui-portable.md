@@ -12,7 +12,7 @@ tags:
 importance: 5
 metadata:
   type: windows_pitfall
-  symptom: import nltk 报 LookupError: unknown encoding: cp936 或 Blocked import of locale from current working directory；导致 SP-Nodes 插件加载失败，SP_DynamicCombo 等节点注册不了而报错。
+  symptom: import nltk 报 LookupError：unknown encoding：cp936 或 Blocked import of locale from current working directory；导致 SP-Nodes 插件加载失败，SP_DynamicCombo 等节点注册不了而报错。
   root_cause: nltk 3.10 新增 inisec.py CWD 安全隔离 finder，会拦截「从当前工作目录(CWD)导入」的模块。ComfyUI 便携版把 python_standalone 放在工作目录 H:\ComfyUI_Windows_portable 内，stdlib 的 locale/collections/functools 等被误判为 CWD 内模块而拦截，nltk 内部一 import stdlib 就抛 ImportError。
   solution: 在导入 nltk 之前设置环境变量 NLTK_DISABLE_IMPORT_SECURITY=1（inisec.py 官方开关）。例如在 SP-Nodes __init__.py 顶部加 os.environ.setdefault("NLTK_DISABLE_IMPORT_SECURITY","1")；同时预下载 punkt 数据。
   environment:
@@ -20,7 +20,7 @@ metadata:
     - Windows 10/11
     tool: python, nltk, ComfyUI
   severity: high
-symptom: import nltk 报 LookupError: unknown encoding: cp936 或 Blocked import of locale from current working directory；导致 SP-Nodes 插件加载失败，SP_DynamicCombo 等节点注册不了而报错。
+symptom: import nltk 报 LookupError：unknown encoding：cp936 或 Blocked import of locale from current working directory；导致 SP-Nodes 插件加载失败，SP_DynamicCombo 等节点注册不了而报错。
 root_cause: nltk 3.10 新增 inisec.py CWD 安全隔离 finder，会拦截「从当前工作目录(CWD)导入」的模块。ComfyUI 便携版把 python_standalone 放在工作目录 H:\ComfyUI_Windows_portable 内，stdlib 的 locale/collections/functools 等被误判为 CWD 内模块而拦截，nltk 内部一 import stdlib 就抛 ImportError。
 solution: 在导入 nltk 之前设置环境变量 NLTK_DISABLE_IMPORT_SECURITY=1（inisec.py 官方开关）。例如在 SP-Nodes __init__.py 顶部加 os.environ.setdefault("NLTK_DISABLE_IMPORT_SECURITY","1")；同时预下载 punkt 数据。
 severity: high
