@@ -10,6 +10,8 @@ data/index-shm
 data/index-wal
 data/activity.log
 .pyrite/
+# 运行时 schema（程序项目写入，权威源在 win-ai-pit 包内 pyrite_windows_pitfalls/kb.yaml）
+kb.yaml
 
 # OS
 Thumbs.db
